@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIDA - União Neo-Iluminista das Américas</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter e Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fff1f1',
+                            100: '#ffe1e1',
+                            500: '#e60000',
+                            600: '#c20000',
+                            700: '#990000',
+                            800: '#7a0000',
+                            900: '#4a0000',
+                        },
+                        dark: {
+                            bg: '#0a0a0a',
+                            card: '#141414',
+                            border: '#262626',
+                            muted: '#a1a1aa'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #f4f4f5;
+            font-family: 'Inter', sans-serif;
+        }
+        .bg-grid-pattern {
+            background-size: 30px 30px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+        .glow-effect {
+            box-shadow: 0 0 50px -10px rgba(194, 0, 0, 0.35);
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-zinc-100 antialiased selection:bg-brand-600 selection:text-white">
+
+    <!-- Navegação -->
+    <nav class="fixed top-0 w-full z-50 bg-dark-bg/80 backdrop-blur-md border-b border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-lg bg-brand-600 flex items-center justify-center font-display font-black text-2xl text-white shadow-lg group-hover:bg-brand-500 transition-colors">
+                    U
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-bold text-lg tracking-wider text-white">UNIDA</span>
+                    <span class="text-[10px] text-zinc-400 tracking-widest uppercase">União Neo-Iluminista</span>
+                </div>
+            </a>
+
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-zinc-300">
+                <a href="#sobre" class="hover:text-brand-500 transition-colors">O que é</a>
+                <a href="#atuacao" class="hover:text-brand-500 transition-colors">Atuação</a>
+                <a href="#simbologia" class="hover:text-brand-500 transition-colors">Simbologia</a>
+                <a href="#conduta" class="hover:text-brand-500 transition-colors">Código Ético</a>
+            </div>
+
+            <!-- Botão Download Nav -->
+            <div class="hidden md:flex items-center">
+                <a href="Unida manual.pdf" download class="inline-flex items-center space-x-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-all shadow-md hover:shadow-brand-600/30">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span>Baixar Manual</span>
+                </a>
+            </div>
+
+            <!-- Botão Mobile -->
+            <button id="mobile-menu-btn" class="md:hidden text-zinc-300 hover:text-white focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-card border-b border-dark-border px-4 pt-2 pb-6 space-y-3">
+            <a href="#sobre" class="block py-2 text-zinc-300 hover:text-white">O que é</a>
+            <a href="#atuacao" class="block py-2 text-zinc-300 hover:text-white">Atuação</a>
+            <a href="#simbologia" class="block py-2 text-zinc-300 hover:text-white">Simbologia</a>
+            <a href="#conduta" class="block py-2 text-zinc-300 hover:text-white">Código Ético</a>
+            <a href="Unida manual.pdf" download class="flex items-center justify-center space-x-2 w-full bg-brand-600 text-white py-3 rounded-lg font-semibold mt-4">
+                <i data-lucide="download" class="w-4 h-4"></i>
+                <span>Baixar Manual (PDF)</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-grid-pattern">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-600/15 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-brand-900/40 border border-brand-700/50 text-brand-100 text-xs font-semibold mb-8">
+                <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-brand-500"></i>
+                <span>Movimento Popular Descentralizado</span>
+            </div>
+            
+            <h1 class="font-display text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white mb-6 leading-none">
+               União Neo-Iluminista das Américas 
+            </h1>
+            
+            <p class="text-lg sm:text-xl text-zinc-400 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
+                Guia de mobilização em defesa da soberania intelectual, combate à desinformação, promoção da ciência e fomento ao pensamento crítico nas redes e fora delas.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="Unida manual.pdf" download class="w-full sm:w-auto inline-flex items-center justify-center space-x-3 bg-brand-600 hover:bg-brand-500 text-white px-8 py-4 rounded-xl font-bold text-base transition-all glow-effect">
+                    <i data-lucide="file-text" class="w-5 h-5"></i>
+                    <span>Baixar Manual Oficial (PDF)</span>
+                </a>
+                <a href="#sobre" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-dark-card hover:bg-zinc-800 text-zinc-300 border border-dark-border px-8 py-4 rounded-xl font-medium text-base transition-colors">
+                    <span>Conhecer Diretrizes</span>
+                    <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Moto Highlight Section -->
+    <section class="py-12 bg-brand-900/20 border-y border-brand-900/40">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="text-xs uppercase tracking-widest text-brand-500 font-bold mb-3">Nosso Moto</p>
+            <blockquote class="text-xl sm:text-2xl font-serif italic text-zinc-200 leading-relaxed">
+                "Pessoas devem ser respeitadas. Ideias podem e devem ser discutidas, refutadas e reformuladas."
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- O que é & Pilares -->
+    <section id="sobre" class="py-24 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mb-4">Os Pilares da UNIDA</h2>
+                <p class="text-zinc-400">Entenda quem somos, a nossa missão e a base ideológica que sustenta este movimento.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-dark-card border border-dark-border p-8 rounded-2xl hover:border-brand-600/50 transition-colors">
+                    <div class="w-12 h-12 rounded-xl bg-brand-900/50 border border-brand-700/50 flex items-center justify-center mb-6 text-brand-500">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white mb-3">O que é a UNIDA?</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Um movimento popular descentralizado que combate a desinformação e a intolerância para reduzir a violência, promover a divulgação científica e defender políticas de bem-estar social.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div id="atuacao" class="bg-dark-card border border-dark-border p-8 rounded-2xl hover:border-brand-600/50 transition-colors">
+                    <div class="w-12 h-12 rounded-xl bg-brand-900/50 border border-brand-700/50 flex items-center justify-center mb-6 text-brand-500">
+                        <i data-lucide="zap" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white mb-3">Como Atuamos?</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Corrigindo notícias falsas, oferecendo ensino gratuito, desenvolvendo softwares <i>open-source</i>, apoiando comunidades vulneráveis e enfrentando pacificamente o autoritarismo.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-dark-card border border-dark-border p-8 rounded-2xl hover:border-brand-600/50 transition-colors">
+                    <div class="w-12 h-12 rounded-xl bg-brand-900/50 border border-brand-700/50 flex items-center justify-center mb-6 text-brand-500">
+                        <i data-lucide="compass" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white mb-3">Base e Ideologia</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Sem filiação partidária, acolhemos pessoas de visões plurais, rejeitando dogmas, autoritarismos e preconceitos. Somos altruístas, independentes e progressistas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simbologia -->
+    <section id="simbologia" class="py-24 bg-dark-card border-y border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mb-4">Simbologia e Identificação</h2>
+                <p class="text-zinc-400">Atos e manifestações com a presença de membros da UNIDA contam com elementos visuais próprios.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Simbolo 1 -->
+                <div class="p-6 rounded-xl bg-dark-bg border border-dark-border flex flex-col items-center text-center">
+                    <div class="p-4 rounded-full bg-zinc-900 mb-4 text-brand-500">
+                        <i data-lucide="hand" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="font-bold text-white mb-2">Letra 'U' em Libras</h4>
+                    <p class="text-xs text-zinc-400">Gesto de identificação pacífica e acessibilidade inclusiva.</p>
+                </div>
+
+                <!-- Simbolo 2 -->
+                <div class="p-6 rounded-xl bg-dark-bg border border-dark-border flex flex-col items-center text-center">
+                    <div class="p-4 rounded-full bg-zinc-900 mb-4 text-brand-500">
+                        <i data-lucide="book-open" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="font-bold text-white mb-2">Livros & Erudição</h4>
+                    <p class="text-xs text-zinc-400">Símbolos de busca incessante pelo conhecimento e pela ciência.</p>
+                </div>
+
+                <!-- Simbolo 3 -->
+                <div class="p-6 rounded-xl bg-dark-bg border border-dark-border flex flex-col items-center text-center">
+                    <div class="p-4 rounded-full bg-zinc-900 mb-4 text-brand-500">
+                        <i data-lucide="palette" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="font-bold text-white mb-2">Elementos em Vermelho</h4>
+                    <p class="text-xs text-zinc-400">Uso de tons vibrantes associados à transformação social e coragem.</p>
+                </div>
+
+                <!-- Simbolo 4 -->
+                <div class="p-6 rounded-xl bg-dark-bg border border-dark-border flex flex-col items-center text-center">
+                    <div class="p-4 rounded-full bg-zinc-900 mb-4 text-brand-500">
+                        <i data-lucide="terminal" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="font-bold text-white mb-2">Soberania Tecnológica</h4>
+                    <p class="text-xs text-zinc-400">Ferramentas <i>Open-Source</i>, sistemas independentes e <i>cyberdecks</i>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Código de Conduta & Ética Aumentada -->
+    <section id="conduta" class="py-24 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-500 font-semibold text-sm tracking-widest uppercase">Diretrizes de Atuação</span>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2 mb-4">Código de Conduta & Ética Aumentada</h2>
+                <p class="text-zinc-400">Regras de atuação ética formuladas para garantir o rigor técnico, o respeito humano e a integridade de um movimento descentralizado.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Regra 1 -->
+                <div class="p-6 rounded-xl bg-dark-card border border-dark-border">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-brand-500 shrink-0"></i>
+                        <h3 class="font-bold text-white text-base">Fatos e Fontes</h3>
+                    </div>
+                    <p class="text-sm text-zinc-400">Debater sempre com base em evidências verificáveis. Nunca propagar inverdades, mesmo que pareçam convenientes.</p>
+                </div>
+
+                <!-- Regra 2 -->
+                <div class="p-6 rounded-xl bg-dark-card border border-dark-border">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i data-lucide="shield" class="w-5 h-5 text-brand-500 shrink-0"></i>
+                        <h3 class="font-bold text-white text-base">Pacto de Não-Violência</h3>
+                    </div>
+                    <p class="text-sm text-zinc-400">Proibido o uso de violência física, verbal, perseguição ou intimidação. A não-crueldade prevalece sobre todas as pautas.</p>
+                </div>
+
+                <!-- Regra 3 -->
+                <div class="p-6 rounded-xl bg-dark-card border border-dark-border">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i data-lucide="refresh-cw" class="w-5 h-5 text-brand-500 shrink-0"></i>
+                        <h3 class="font-bold text-white text-base">Retratação e Erros</h3>
+                    </div>
+                    <p class="text-sm text-zinc-400">Compromisso com a verdade: se cometemos um erro de apuração, retratamo-nos publicamente com a mesma visibilidade e clareza.</p>
+                </div>
+
+                <!-- Regra 4 -->
+                <div class="p-6 rounded-xl bg-dark-card border border-dark-border">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i data-lucide="eye-off" class="w-5 h-5 text-brand-500 shrink-0"></i>
+                        <h3 class="font-bold text-white text-base">Respeito à Privacidade (Anti-Doxxing)</h3>
+                    </div>
+                    <p class="text-sm text-zinc-400">É proibido expor dados pessoais ou coordenar linchamentos virtuais. O foco está no combate às ideias nocivas, nunca à pessoa.</p>
+                </div>
+
+                <!-- Regra 5 -->
+                <div class="p-6 rounded-xl bg-dark-card border border-dark-border">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i data-lucide="graduation-cap" class="w-5 h-5 text-brand-500 shrink-0"></i>
+                        <h3 class="font-bold text-white text-base">Abordagem Pedagógica</h3>
+                    </div>
+                    <p class="text-sm text-zinc-400">Diferenciamos o erro ingênuo da má-fé deliberada. Acolhemos com instrução gratuita quem foi enganado por desinformação.</p>
+                </div>
+
+                <!-- Regra 6 -->
+                <div class="p-6 rounded-xl bg-dark-card border border-dark-border">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i data-lucide="lock" class="w-5 h-5 text-brand-500 shrink-0"></i>
+                        <h3 class="font-bold text-white text-base">Segurança Digital (OpSec)</h3>
+                    </div>
+                    <p class="text-sm text-zinc-400">Sendo um movimento descentralizado, cada membro zela de forma autônoma pela própria segurança cibernética e privacidade online.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Download / Chamada Final -->
+    <section class="py-20 bg-gradient-to-b from-dark-bg via-brand-950/30 to-dark-bg border-t border-dark-border">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="inline-block p-4 rounded-2xl bg-brand-600/10 border border-brand-600/30 mb-6">
+                <i data-lucide="book-marked" class="w-10 h-10 text-brand-500"></i>
+            </div>
+            <h2 class="font-display text-3xl sm:text-5xl font-black text-white mb-6">Pronto para combater o bom combate?</h2>
+            <p class="text-zinc-400 text-lg mb-8 max-w-2xl mx-auto">
+                Faça o download do manual completo em formato PDF para acessar todas as diretrizes de atuação, rotinas de fact-checking e materiais de formação.
+            </p>
+            <a href="Unida manual.pdf" download class="inline-flex items-center space-x-3 bg-brand-600 hover:bg-brand-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-xl hover:shadow-brand-600/40">
+                <i data-lucide="download" class="w-6 h-6"></i>
+                <span>Download do Manual Oficial (.PDF)</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="py-12 bg-dark-bg border-t border-dark-border text-sm text-zinc-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-7 h-7 rounded bg-brand-600 flex items-center justify-center font-bold text-white text-xs">
+                    U
+                </div>
+                <span class="font-display font-semibold text-zinc-300">UNIDA &copy; 2026</span>
+            </div>
+
+            <p class="text-center text-xs text-zinc-500 max-w-md">
+                Movimento popular descentralizado. A adesão é livre para todos que representarem estes valores em suas ações cotidianas.
+            </p>
+
+            <div class="flex items-center space-x-6 text-zinc-400">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center space-x-1">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de Inicialização de Ícones e Menu Mobile -->
+    <script>
+        lucide.createIcons();
+
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
