@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>UNIDA - União Neo-Iluminista das Américas</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset e Variáveis */
+        :root {
+            --primary-red: #8b2e2e;
+            --dark-red: #6d1f1f;
+            --text-dark: #2b2926;
+            --text-muted: #55514b;
+            --text-light: #f7f5f2;
+            --bg-light: #f7f5f2;
+            --bg-alt: #ffffff;
+            --border-soft: #e6e1da;
+            --font-main: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.65;
+            font-weight: 400;
+            font-size: 15px; /* Aumentado de 14px */
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-red);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Lazy Load (Reveal) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+            will-change: opacity, transform;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background-color: var(--primary-red);
+            color: var(--text-light);
+            padding: 3rem 1.5rem 4.5rem;
+            overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('bg.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
+            filter: grayscale(100%) contrast(110%);
+            z-index: 1;
+        }
+
+        /* Cabeçalho alinhado à esquerda */
+        .hero-header {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-align: left;
+        }
+
+        .hero-header .u-icon-container {
+            font-size: 1.6rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-header h1 {
+            color: var(--text-light);
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        .hero-header .hero-subtitle {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0.3rem;
+            font-size: 0.8rem; /* Aumentado de 0.7rem */
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.75);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+
+        /* Centro do Hero - Título de destaque */
+        .hero-center {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 700px;
+            margin: 3.5rem auto 3rem;
+        }
+
+        .hero-center p {
+            font-size: 1.65rem; /* Aumentado consideravelmente */
+            font-weight: 800; /* Peso de título */
+            color: var(--text-light);
+            line-height: 1.35;
+            text-wrap: balance;
+            letter-spacing: -0.2px;
+            text-transform:uppercase;
+        }
+
+        /* Botoes de Ação */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            z-index: 2;
+            position: relative;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.7rem;
+            font-size: 0.85rem; /* Aumentado levemente */
+            font-weight: 500;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1.5px solid transparent;
+            font-family: var(--font-main);
+        }
+
+        .btn-primary {
+            background-color: var(--text-light);
+            color: var(--primary-red);
+            border-color: var(--text-light);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--text-light);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-light);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-light);
+            color: var(--primary-red);
+            border-color: var(--text-light);
+        }
+
+        /* Main Content Sections */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        /* Grid de Pilares */
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .pillar {
+            padding-top: 1.25rem;
+            border-top: 2px solid var(--primary-red);
+        }
+
+        .pillar-icon {
+            font-size: 1.4rem;
+            color: var(--primary-red);
+            margin-bottom: 0.75rem;
+        }
+
+        .pillar h3 {
+            font-size: 1.1rem; /* Aumentado de 1rem */
+            margin-bottom: 0.6rem;
+        }
+
+        .pillar p {
+            font-size: 0.92rem; /* Aumentado de 0.82rem */
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* Como Atuaremos */
+        .act-section {
+            margin-bottom: 4rem;
+        }
+
+        .act-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.4rem; /* Aumentado de 1.3rem */
+            font-weight: 600;
+        }
+
+        .act-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.85rem 2rem;
+        }
+
+        .act-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.92rem; /* Aumentado de 0.82rem */
+            padding-bottom: 0.7rem;
+            border-bottom: 1px solid var(--border-soft);
+            color: var(--text-muted);
+        }
+
+        .act-list i {
+            color: var(--primary-red);
+            margin-top: 5px;
+            font-size: 0.75rem;
+        }
+
+        /* Simbologias */
+        .symbols-section {
+            background-color: var(--bg-alt);
+            padding: 4rem 1.5rem;
+            border-top: 1px solid var(--border-soft);
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .symbols-section h2 {
+            font-size: 1.4rem; /* Aumentado */
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .symbols-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .symbol-item {
+            text-align: left;
+        }
+
+        .symbol-visual {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            background-color: #eee;
+        }
+
+        .symbol-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(20%) contrast(105%);
+            transition: filter 0.3s ease;
+        }
+
+        .symbol-item:hover .symbol-visual img {
+            filter: grayscale(0%) contrast(100%);
+        }
+
+        .symbol-item h4 {
+            font-size: 0.98rem; /* Aumentado de 0.9rem */
+            color: var(--text-dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .symbol-item p {
+            font-size: 0.85rem; /* Aumentado de 0.78rem */
+            color: var(--text-muted);
+        }
+
+        /* Código de Conduta */
+        .conduct-section {
+            background-color: var(--primary-red);
+            color: var(--text-light);
+            padding: 4rem 1.5rem;
+        }
+
+        .conduct-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .conduct-section h2 {
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 0.75rem;
+            font-size: 1.4rem; /* Aumentado */
+            font-weight: 600;
+        }
+
+        .conduct-intro {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            font-size: 0.92rem; /* Aumentado */
+            opacity: 0.85;
+        }
+
+        .conduct-list {
+            list-style: none;
+            margin-bottom: 3rem;
+        }
+
+        .conduct-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            font-size: 0.92rem; /* Aumentado */
+            font-weight: 300;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.92);
+        }
+
+        .conduct-list li:last-child {
+            border-bottom: none;
+        }
+
+        .conduct-list i {
+            color: var(--text-light);
+            margin-top: 0.2rem;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+            opacity: 0.8;
+        }
+
+        /* Bloco de Pacto */
+        .pact-box {
+            background-color: var(--dark-red);
+            padding: 2rem;
+            border-radius: 4px;
+        }
+
+        .pact-box h3 {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.05rem; /* Aumentado */
+        }
+
+        .pact-box p {
+            margin-bottom: 1rem;
+            font-size: 0.92rem; /* Aumentado */
+            font-weight: 300;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .pact-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .pact-box strong {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1917;
+            color: #8a8680;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: 0.78rem; /* Aumentado */
+            font-weight: 300;
+        }
+
+        footer p {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero-header h1 {
+                font-size: 1.3rem;
+            }
+            .hero-header .hero-subtitle {
+                font-size: 0.72rem;
+            }
+            .hero-center p {
+                font-size: 1.25rem; /* Ajuste mobile */
+            }
+            .action-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+            .btn {
+                width: 100%;
+            }
+            .conduct-list li {
+                font-size: 0.88rem;
+                gap: 0.75rem;
+            }
+            .pact-box {
+                padding: 1.5rem;
+            }
+            .symbol-visual {
+                height: 130px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-header">
+            <div class="u-icon-container">
+                <i class="fa-solid fa-fist-raised"></i>
+            </div>
+            <h1>UNIDA</h1>
+            <span class="hero-subtitle">União Neo-Iluminista das Américas</span>
+        </div>
+        
+        <div class="hero-center">
+            <p>Movimento de combate à desinformação.</p>
+        </div>
+
+        <div class="action-buttons">
+            <a href="https://chat.whatsapp.com/J5RwfN9z9Ei2u1dBYmQJny" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                <i class="fa-brands fa-whatsapp"></i> Entrar no Grupo
+            </a>
+            <a href="#download-placeholder" class="btn btn-outline">
+                <i class="fa-solid fa-file-pdf"></i> Baixar o Manual
+            </a>
+            <a href="acoes/" class="btn btn-outline">
+                <i class="fa-solid fa-list-check"></i> Ações da UNIDA
+            </a>
+            <a href="acoes.html" class="btn btn-outline">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Comece a atuar
+            </a>
+        </div>
+    </header>
+
+    <!-- O que é / Onde Atuamos / Nosso Moto -->
+    <section class="container">
+        <div class="section-grid">
+            <div class="pillar reveal">
+                <div class="pillar-icon"><i class="fa-solid fa-bullseye"></i></div>
+                <h3>O que é a UNIDA?</h3>
+                <p>A UNIDA é um movimento popular descentralizado que visa combater a desinformação e intolerância com o objetivo de reduzir a violência e promover a divulgação científica, priorizar a razão e o pensamento crítico e promover políticas públicas de bem estar social.</p>
+            </div>
+            <div class="pillar reveal">
+                <div class="pillar-icon"><i class="fa-solid fa-globe"></i></div>
+                <h3>Onde atuamos?</h3>
+                <p>Nas redes e fora delas, nos dividindo em grupos táticos que visam disseminar conhecimento combatendo informações falsas (independente da ideologia política que elas sustentem), promovendo a cooperação e a troca respeitosa de ideias.</p>
+            </div>
+            <div class="pillar reveal">
+                <div class="pillar-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                <h3>Nosso Moto</h3>
+                <p>Pessoas devem ser respeitadas, ideias podem e devem ser discutidas, refutadas e reformuladas se necessário. Todas as pessoas devem ser tratadas com dignidade, justiça e respeito independente da sua condição física, financeira, intelectual ou geográfica.</p>
+            </div>
+        </div>
+
+        <!-- Como Atuaremos -->
+        <div class="act-section reveal">
+            <h2>Como atuaremos?</h2>
+            <ul class="act-list">
+                <li><i class="fa-solid fa-check"></i> Corrigindo e/ou denunciando informações falsas online</li>
+                <li><i class="fa-solid fa-check"></i> Promovendo fact checking</li>
+                <li><i class="fa-solid fa-check"></i> Ensinando gratuitamente e criando material de estudo</li>
+                <li><i class="fa-solid fa-check"></i> Arrecadando financiamento para campanhas de conscientização</li>
+                <li><i class="fa-solid fa-check"></i> Desenvolvendo ferramentas open-source</li>
+                <li><i class="fa-solid fa-check"></i> Promovendo campanhas de apoio a comunidades vulneráveis</li>
+                <li><i class="fa-solid fa-check"></i> Recrutando participantes para assistência aos mais vulneráveis</li>
+                <li><i class="fa-solid fa-check"></i> Promovendo treinamento físico e intelectual</li>
+                <li><i class="fa-solid fa-check"></i> Promovendo suporte à empreendedores engajados na missão</li>
+                <li><i class="fa-solid fa-check"></i> Enfrentamento pacífico de figuras autoritárias</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Simbologias e Identificação -->
+    <section class="symbols-section">
+        <div class="container" style="padding-top: 0; padding-bottom: 0;">
+            <h2 class="reveal">Simbologias e Identificação</h2>
+            <div class="symbols-grid">
+                <div class="symbol-item reveal">
+                    <div class="symbol-visual">
+                        <img src="https://images.unsplash.com/photo-1590422749897-47036da0b0ff?auto=format&fit=crop&w=600&q=80" alt="Mão fazendo o sinal da letra U em linguagem de sinais" loading="lazy">
+                    </div>
+                    <h4>A letra U em Linguagem de Sinais</h4>
+                    <p>Atos marcados pela presença de membros da UNIDA terão representados os seguintes símbolos.</p>
+                </div>
+                <div class="symbol-item reveal">
+                    <div class="symbol-visual">
+                        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80" alt="Livros empilhados em uma estante" loading="lazy">
+                    </div>
+                    <h4>Presença de Livros</h4>
+                    <p>A presença de livros e outros símbolos de erudição.</p>
+                </div>
+                <div class="symbol-item reveal">
+                    <div class="symbol-visual">
+                        <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?auto=format&fit=crop&w=600&q=80" alt="Tecido vermelho vibrante" loading="lazy">
+                    </div>
+                    <h4>Itens Vermelhos</h4>
+                    <p>Cores chamativas associadas à transformação social.</p>
+                </div>
+                <div class="symbol-item reveal">
+                    <div class="symbol-visual">
+                        <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&w=600&q=80" alt="Código de computador em tela escura" loading="lazy">
+                    </div>
+                    <h4>Ferramentas Open-Source</h4>
+                    <p>Oposição à Big Techs e priorização de ferramentas OPEN-SOURCE.</p>
+                </div>
+                <div class="symbol-item reveal">
+                    <div class="symbol-visual">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Placa de circuito eletrônico" loading="lazy">
+                    </div>
+                    <h4>Tecnologia Caseira</h4>
+                    <p>Elementos tecnológicos ou invenções "caseiros" como cyber decks e outros.</p>
+                </div>
+                <div class="symbol-item reveal">
+                    <div class="symbol-visual">
+                        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80" alt="Tubos de ensaio em laboratório científico" loading="lazy">
+                    </div>
+                    <h4>Grandes Cientistas</h4>
+                    <p>A menção à grandes cientistas ou filósofos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Código de Conduta -->
+    <section class="conduct-section">
+        <div class="conduct-container">
+            <h2 class="reveal">Como deve se comportar um membro da UNIDA?</h2>
+            <p class="conduct-intro reveal">Todos, para que sejam reconhecidos como membros da UNIDA, devem seguir o código de conduta do movimento conforme explicaremos a seguir.</p>
+            
+            <ul class="conduct-list">
+                <li class="reveal"><i class="fa-solid fa-gavel"></i> Debater sempre com fontes e fatos. Não propagar mentiras mesmo que elas sejam convenientes.</li>
+                <li class="reveal"><i class="fa-solid fa-handshake"></i> Tratar o irmão com respeito, mesmo que ele esteja mal informado ou tenha uma opinião diferente da sua.</li>
+                <li class="reveal"><i class="fa-solid fa-scale-balanced"></i> Ser imparcial. Reconhecer que nenhum lado do debate é perfeito, mas que existem perigos reais a serem combatidos.</li>
+                <li class="reveal"><i class="fa-solid fa-ban"></i> Não engajar com pessoas truculentas e desrespeitosas. Não responder à provocações.</li>
+                <li class="reveal"><i class="fa-solid fa-shield-halved"></i> Ser firme. Não aceitar desrespeito como estratégia de intimidação. Denunciar e continuar se posicionando.</li>
+                <li class="reveal"><i class="fa-solid fa-flag"></i> Denunciar fake news às plataformas, não engajar.</li>
+                <li class="reveal"><i class="fa-solid fa-file-circle-exclamation"></i> Se decidir anexar provas que se trata de uma fake news e o autor não remover o post denuncie.</li>
+                <li class="reveal"><i class="fa-solid fa-comment-slash"></i> Não engajar ou reproduzir discurso de ódio.</li>
+            </ul>
+
+            <div class="pact-box reveal">
+                <h3><i class="fa-solid fa-dove"></i> Pacto de não-violência</h3>
+                <p>Um membro da UNIDA não deve, salvo em caso de defesa da vida, fazer uso de violência física ou verbal, perseguição, exclusão ou bullying. Este movimento repudia o uso de técnicas cruéis para obtenção de qualquer objetivo que seja. A humanidade, e não-crueldade devem prevalescer sobre as outras pautas.</p>
+                
+                <h3 class="pact-subtitle"><i class="fa-solid fa-triangle-exclamation"></i> Quando o erro vier de nós</h3>
+                <p><strong>Compromisso com a Verdade:</strong> Todo membro da UNIDA assume o compromisso público de retificar imediatamente qualquer erro de apuração ou dado incorreto veiculado pelo movimento ou por suas ações individuais.</p>
+                <p><strong>Protocolo de Retratação:</strong> Constatada a falha, a correção deve ser publicada com o mesmo alcance da publicação original, com clareza, humildade e sem ocultar o histórico da informação revisada.</p>
+                <p><strong>Respeito à Privacidade:</strong> É estritamente proibido expor dados pessoais (doxxing), tais como endereço, número de telefone, documentos, local de trabalho ou informações familiares de qualquer indivíduo.</p>
+                <p><strong>Foco nas Ideias, Nunca nas Pessoas:</strong> Combatemos narrativas, autoritarismos e desinformações, nunca a vida privada dos indivíduos. O movimento repudia categoricamente orquestrações de assédio em massa, linchamentos virtuais ou campanhas de intimidação.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>UNIÃO NEO-ILUMINISTA DAS AMERICAS</strong></p>
+        <p>Um movimento popular descentralizado.</p>
+        <p class="footer-copy">&copy; 2024 UNIDA. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script: Lazy Load / Reveal on Scroll -->
+    <script>
+        (function () {
+            var elements = document.querySelectorAll('.reveal');
+
+            if (!('IntersectionObserver' in window)) {
+                elements.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+
+            var observer = new IntersectionObserver(function (entries, obs) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '0px 0px -10% 0px',
+                threshold: 0.12
+            });
+
+            elements.forEach(function (el) { observer.observe(el); });
+        })();
+    </script>
+
+</body>
+</html>
